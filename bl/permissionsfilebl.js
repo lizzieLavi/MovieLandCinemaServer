@@ -10,6 +10,7 @@ const getPermissions = async function()
 const getPermission = async function(id)
 {  
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
+    console.log(Permissions)
     let Permission = Permissions.permissions.find(permission => permission.id == id)
 
     return Permission;
