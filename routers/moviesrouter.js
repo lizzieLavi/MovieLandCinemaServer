@@ -104,11 +104,10 @@ router.route('/:id').put(async function(req,resp)
         try
         {
 
-          console.log(req.params.id)
           let obj = req.body;
           let id = req.params.id;
         
-          let status = await moviesBL.updateMovie(id,obj)
+          let status = await moviesBL.updateMovieData(id,obj)
           return resp.json(status);
         }
         catch
