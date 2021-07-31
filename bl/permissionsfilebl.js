@@ -3,14 +3,13 @@ const PermissionsFileDAL = require("../dal/permissionsdal")
 const getPermissions = async function()
 {
    let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-   return Permissions;
+   return Permissions[0];
 }
 
 const getPermission = async function(id)
 {  
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-    console.log(Permissions[0].permissions)
-    let Permission = Permissions[0].permissions.find(permission => permission._id == id)
+    let Permission = Permissions[0].permissions.find(permission => permission.id == id)
 
     return Permission;
 }
@@ -27,7 +26,7 @@ const addPermission = async function(obj)
 const updatePermission = async function(id,obj)
 {
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-    let PermissionIndex = Permissions[0].permissions.findIndex(permission => permission._id==id)
+    let PermissionIndex = Permissions[0].permissions.findIndex(permission => permission.id==id)
     Permissions[0].permissions[PermissionIndex] = obj
     let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions)
 
@@ -39,7 +38,7 @@ const deletePermission = async function(id)
 {
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
     let PermissionIndex = Permissions[0].permissions.findIndex(permission => permission.id==id)
-    Permissions.permissions.splice(PermissionIndex,1)
+    Permissions[0].permissions.splice(PermissionIndex,1)
     let Status = await PermissionsFileDAL.writePermissionsJsonToDB (Permissions)
 
     return Status;
