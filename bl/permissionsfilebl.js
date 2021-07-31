@@ -31,7 +31,7 @@ const updatePermission = async function(id,obj)
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
     let PermissionIndex = Permissions[0].permissions.findIndex(permission => permission.id==id)
     PermissionsArr= Permissions[0].permissions
-    PermissionsArr[PermissionIndex].push(obj)
+    PermissionsArr[PermissionIndex]=obj
     let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0]._id,PermissionsArr)
 
     return Status;
