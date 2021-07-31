@@ -19,7 +19,7 @@ const addMovie = function(obj)
 
 const updateMovie = function(id,obj)
 {
-    let url = "https://subsws.herokuapp.com//movies/"+ id;
+    let url = "https://subsws.herokuapp.com/movies/"+ id;
     return axios.put(url,obj);
 }
 
