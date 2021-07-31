@@ -60,8 +60,10 @@ router.post('/', async function(req, res)
 
   else
   {
+
     obj = {UserName:userName,Password:Password};
     let status = await UsersBL.addUserLogIn(obj)
+    res.set('Access-Control-Allow-Origin', '*');
     return res.json(status);
   }
 

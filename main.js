@@ -10,7 +10,6 @@ const PermissionsRouter = require('./routers/permissionsrouter');
 
 var app = express();
 
-app.options('*', cors());
 
 app.use(cors());
 
