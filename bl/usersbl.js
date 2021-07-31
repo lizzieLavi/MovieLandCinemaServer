@@ -26,6 +26,8 @@ const getAllUserDetails = async function()
         {
             let logInData= await axios.get("https://subsws.herokuapp.com/api/LogIn/" +user.id)
             let PermissionsData = await PermissionsBL.getPermission(user.id)
+
+            console.log(PermissionsData)
             
 
 
