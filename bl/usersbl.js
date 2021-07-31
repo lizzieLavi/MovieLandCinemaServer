@@ -42,8 +42,8 @@ const CurrentUserData = async function(id)
     let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+id)
     let UserData= await getUserDetails(id)
     console.log(UserData)
-    let obj ={UserData:UserData, UserPermissions: PermissionsData.data.Permissions}
-    return(obj)
+    //let obj ={UserData:UserData, UserPermissions: PermissionsData.data.Permissions}
+   // return(obj)
 
 }
 
@@ -160,6 +160,7 @@ const getUsersDetails = async function()
 const getUserDetails = async function(id)
 {
     let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
+    console.log(Users)
     let User = Users[0].users.find(user => user.id == id)
 
     return User;
