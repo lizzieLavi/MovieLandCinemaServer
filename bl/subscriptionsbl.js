@@ -1,5 +1,5 @@
 const SubscriptionsDAL = require("../dal/subscriptionsdal")
-const moviesDAL = require("../DAL/MoviesDAL")
+const moviesDAL = require("../dal/moviesdal")
 
 
 

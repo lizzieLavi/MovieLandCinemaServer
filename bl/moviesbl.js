@@ -1,4 +1,4 @@
-const MoviesDAL = require("../dal/moviesdal")
+const MoviesDAL = require("../dal/moviesdal") 
 
 const getMoviesData = async function()
 {
