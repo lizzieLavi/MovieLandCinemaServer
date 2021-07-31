@@ -104,7 +104,7 @@ router.route('/:id').put(async function(req,resp)
         try
         {
 
-          console.log(req.params.id;)
+          console.log(req.params.id)
           let obj = req.body;
           let id = req.params.id;
         
