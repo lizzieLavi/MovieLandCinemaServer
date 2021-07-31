@@ -26,7 +26,7 @@ const writePermissionsJsonToDB = function(permissionsArr)
       
         PermissionsModel.findByIdAndUpdate(permissionsArr._id,
             {
-               permissions: permissionsArr
+               permissions: permissionsArr.permissions
             },
             function(err)
             {
