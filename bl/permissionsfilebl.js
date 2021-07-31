@@ -18,7 +18,8 @@ const getPermission = async function(id)
 const addPermission = async function(obj)
 {
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-    Permissions[0].permissions.push(obj);
+ (Permissions[0].permissions).push(obj);
+ console.log(Permissions[0].permissions)
     let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0])
 
     return Status;
