@@ -1,7 +1,6 @@
 const axios = require('axios');
 const usersModel = require('../models/usersmodel');
-const UsersFileDAL = require("../dal/filesdal");
-const PermissionsBL = require('../bl/permissionsfilebl');
+const UsersFileDAL = require("../dal/usersdetailsdal");
 
 
 
@@ -24,12 +23,8 @@ const getAllUserDetails = async function()
 
     await Promise.all(Users.users.map(async(user) => 
         {
-            let logInData= await axios.get("https://subsws.herokuapp.com/api/LogIn/" +user.id)
-            let PermissionsData = await PermissionsBL.getPermission(user.id)
-
-            console.log(PermissionsData)
-            
-
+            let logInData= await axios.get("https://cinemaws.herokuapp.com/api/LogIn/" +user.id)
+            let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+user.id)
 
 
             let UserDataObj={user:user,logIn:logInData.data,Permissions:PermissionsData.data}
@@ -44,7 +39,7 @@ const getAllUserDetails = async function()
 
 const CurrentUserData = async function(id)
 {
-    let PermissionsData = await axios.get("http://localhost:3000/api/Permissions/"+id)
+    let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+id)
     let UserData= await getUserDetails(id)
     let obj ={UserData:UserData, UserPermissions: PermissionsData.data.permissions}
     return(obj)
@@ -156,14 +151,14 @@ const deleteUserLogIn = function(id)
 
 const getUsersDetails = async function()
 {
-   let Users = await UsersFileDAL.readFile("./Files/users.json")
+   let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
    
    return Users;
 }
 
 const getUserDetails = async function(id)
 {
-    let Users = await UsersFileDAL.readFile("./Files/users.json")
+    let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     let User = Users.users.find(user => user.id == id)
 
     return User;
@@ -171,19 +166,19 @@ const getUserDetails = async function(id)
 
 const addUserDetails = async function(obj)
 {
-    let Users = await UsersFileDAL.readFile("./Files/users.json")
+    let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     Users.users.push(obj);
-    let Status = await UsersFileDAL.writeToFile("./Files/users.json",Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
 
     return Status;
 }
 
 const updateUserDetails = async function(id,obj)
 {
-    let Users = await UsersFileDAL.readFile("./Files/users.json")
+    let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     let UserIndex = Users.users.findIndex(user => user.id==id)
     Users.users[UserIndex] = obj
-    let Status = await UsersFileDAL.writeToFile("./Files/users.json",Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
 
     return Status;
 
@@ -191,10 +186,10 @@ const updateUserDetails = async function(id,obj)
 
 const deleteUserDetails = async function(id)
 {
-    let Users = await UsersFileDAL.readFile("./Files/users.json")
+    let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     let UserIndex = Users.users.findIndex(user => user.id==id)
     Users.users.splice(UserIndex,1)
-    let Status = await UsersFileDAL.writeToFile("./Files/users.json",Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
 
     return Status;
 
