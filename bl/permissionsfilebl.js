@@ -18,9 +18,10 @@ const getPermission = async function(id)
 const addPermission = async function(obj)
 {
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-    console.log(Permissions[0].permissions)
-    (Permissions[0].permissions).push(obj);
-    let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0])
+    let PermissionsArr=Permissions[0].permissions
+    PermissionsArr.push(obj);
+    console.log(PermissionsArr)
+    let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0]._id,arr)
 
     return Status;
 }
@@ -29,8 +30,9 @@ const updatePermission = async function(id,obj)
 {
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
     let PermissionIndex = Permissions[0].permissions.findIndex(permission => permission.id==id)
-    Permissions[0].permissions[PermissionIndex] = obj
-    let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0])
+    PermissionsArr= Permissions[0].permissions
+    PermissionsArr[PermissionIndex].push(obj)
+    let Status = await PermissionsFileDAL.writePermissionsJsonToDB(Permissions[0]._id,arr)
 
     return Status;
 

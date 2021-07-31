@@ -18,15 +18,15 @@ const readPermissionsJsonFromDB = function()
 
 }
 
-const writePermissionsJsonToDB = function(permissionsArr)
+const writePermissionsJsonToDB = function(id,permissionsArr)
 {
 
     return new Promise((resolve,reject) =>
     {
       
-        PermissionsModel.findByIdAndUpdate(permissionsArr._id,
+        PermissionsModel.findByIdAndUpdate(id,
             {
-               permissions: permissionsArr.permissions
+               permissions: permissionsArr
             },
             function(err)
             {
