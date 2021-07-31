@@ -1,6 +1,6 @@
 const axios = require('axios');
 const usersModel = require('../models/usersmodel');
-const UsersFileDAL = require("../dal/usersdetailsdal");
+const UsersFileDAL = require("../dal/userdetailsdal");
 
 
 
