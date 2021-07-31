@@ -3,13 +3,13 @@ const PermissionsFileDAL = require("../dal/permissionsdal")
 const getPermissions = async function()
 {
    let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
-   console.log(Permissions.permissions)
    return Permissions;
 }
 
 const getPermission = async function(id)
 {  
     let Permissions = await PermissionsFileDAL.readPermissionsJsonFromDB()
+    console.log(Permissions.permissions)
     let Permission = Permissions.permissions.find(permission => permission._id == id)
 
     return Permission;
