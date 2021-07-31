@@ -168,7 +168,7 @@ const addUserDetails = async function(obj)
 {
     let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     Users[0].users.push(obj);
-    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users[0])
 
     return Status;
 }
@@ -178,7 +178,7 @@ const updateUserDetails = async function(id,obj)
     let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     let UserIndex = Users[0].users.findIndex(user => user.id==id)
     Users[0].users[UserIndex] = obj
-    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users[0])
 
     return Status;
 
@@ -189,7 +189,7 @@ const deleteUserDetails = async function(id)
     let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
     let UserIndex = Users[0].users.findIndex(user => user.id==id)
     Users[0].users.splice(UserIndex,1)
-    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users)
+    let Status = await UsersFileDAL.writeUserDetailsJsonToDB(Users[0])
 
     return Status;
 
