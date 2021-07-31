@@ -1,5 +1,5 @@
 const axios = require('axios');
-const usersModel = require('../models/usersModel');
+const usersModel = require('../models/usersmodel');
 const UsersFileDAL = require("../dal/filesdal");
 
 
