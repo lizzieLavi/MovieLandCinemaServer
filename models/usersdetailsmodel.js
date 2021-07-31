@@ -4,4 +4,4 @@ let usersDetailsSchema = new mongoose.Schema({
   users: Array
 });
 
-module.exports = mongoose.model('usersDetails',usersDetailsSchema);
+module.exports = mongoose.model('UsersDetails',usersDetailsSchema);
