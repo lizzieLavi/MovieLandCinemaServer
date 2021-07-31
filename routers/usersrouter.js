@@ -34,7 +34,6 @@ router.route('/CurrentUserData/:id').get(async function(req,resp)
   {
     try
     {
-
       let userInfo= await usersBL.CurrentUserData(req.params.id)
       resp.set('Access-Control-Allow-Origin', '*');
       return resp.send(userInfo);
