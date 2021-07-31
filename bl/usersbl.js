@@ -21,7 +21,7 @@ const getAllUserDetails = async function()
     let Users= await getUsersDetails()
        
 
-    await Promise.all(Users.users.map(async(user) => 
+    await Promise.all(Users[0].users.map(async(user) => 
         {
             let logInData= await axios.get("https://cinemaws.herokuapp.com/api/LogIn/" +user.id)
             let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+user.id)
@@ -41,7 +41,6 @@ const CurrentUserData = async function(id)
 {
     let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+id)
     let UserData= await getUserDetails(id)
-    console.log(UserData)
     let obj ={UserData:UserData, UserPermissions: PermissionsData.data.Permissions}
     return(obj)
 
