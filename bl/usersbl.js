@@ -23,8 +23,8 @@ const getAllUserDetails = async function()
 
     await Promise.all(Users.users.map(async(user) => 
         {
-            let logInData= await axios.get("http://localhost:3000/api/LogIn/" +user.id)
-            let PermissionsData = await axios.get("http://localhost:3000/api/Permissions/"+user.id)
+            let logInData= await axios.get("https://subsws.herokuapp.com/api/LogIn/" +user.id)
+            let PermissionsData = await axios.get("https://subsws.herokuapp.com/api/Permissions/"+user.id)
 
 
 
@@ -40,7 +40,7 @@ const getAllUserDetails = async function()
 
 const CurrentUserData = async function(id)
 {
-    let PermissionsData = await axios.get("http://localhost:3000/api/Permissions/"+id)
+    let PermissionsData = await axios.get("https://subsws.herokuapp.com/api/Permissions/"+id)
     let UserData= await getUserDetails(id)
     let obj ={UserData:UserData, UserPermissions: PermissionsData.data.permissions}
     return(obj)
