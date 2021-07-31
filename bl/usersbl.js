@@ -160,6 +160,7 @@ const getUsersDetails = async function()
 const getUserDetails = async function(id)
 {
     let Users = await UsersFileDAL.readUserDetailsJsonFromDB()
+    console.log(Users)
     let User = Users[0].users.find(user => user.id == id)
 
     return User;
