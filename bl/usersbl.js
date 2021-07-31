@@ -40,9 +40,9 @@ const getAllUserDetails = async function()
 const CurrentUserData = async function(id)
 {
     let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+id)
-    console.log(PermissionsData)
     let UserData= await getUserDetails(id)
-    let obj ={UserData:UserData, UserPermissions: PermissionsData.data.permissions}
+    console.log(UserData)
+    let obj ={UserData:UserData, UserPermissions: PermissionsData.data.Permissions}
     return(obj)
 
 }
