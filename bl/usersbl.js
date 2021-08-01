@@ -30,8 +30,6 @@ const getAllUserDetails = async function()
             let UserDataObj={user:user,logIn:logInData.data,Permissions:PermissionsData.data}
 
             UsersArr=[...UsersArr,UserDataObj]
-
-         
        }))
 
        return (UsersArr)
@@ -41,8 +39,7 @@ const CurrentUserData = async function(id)
 {
     let PermissionsData = await axios.get("https://cinemaws.herokuapp.com/api/Permissions/"+id)
     let UserData= await getUserDetails(id)
-    console.log(PermissionsData)
-    let obj ={UserData:UserData, UserPermissions: PermissionsData.data.Permissions}
+    let obj ={UserData:UserData, UserPermissions: PermissionsData.data.permissions}
     return(obj)
 
 }
